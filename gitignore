@@ -18,3 +18,5 @@ debug/
 Thumbs.db
 .vscode/
 .idea/
+
+.tinyfish.key
