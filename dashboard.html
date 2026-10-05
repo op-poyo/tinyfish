@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SocietyBot dashboard</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1b1f2a;--mute:#667085;--line:#e4e7ee;--accent:#4f46e5;--accent-soft:#eceafd}
+@media (prefers-color-scheme:dark){:root{--bg:#12141b;--card:#1b1e28;--ink:#e8eaf1;--mute:#9aa3b5;--line:#2a2e3b;--accent:#8b85ff;--accent-soft:#272a46}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 20px 60px}
+h1{margin:0;font-size:26px}
+.sub{color:var(--mute);margin:4px 0 22px}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer;font:inherit}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-width:130px}
+.stat b{display:block;font-size:24px}
+.stat span{color:var(--mute);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;align-items:center}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.chiplabel{color:var(--mute);font-size:13px}
+input[type=search]{width:100%;max-width:420px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;margin-bottom:14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:auto;max-height:68vh}
+table{border-collapse:collapse;width:100%}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{position:sticky;top:0;background:var(--card);cursor:pointer;white-space:nowrap;font-size:13px;color:var(--mute);user-select:none}
+th:hover{color:var(--ink)}
+td{max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+tr:hover td{background:var(--accent-soft)}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.empty{padding:40px;text-align:center;color:var(--mute)}
+.count{color:var(--mute);font-size:13px;margin:8px 2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SocietyBot</h1>
+  <div class="sub">UCL Students' Union societies and events, read from the live web with TinyFish. Generated 05 Oct 2026, 22:37.</div>
+  <div class="tabs" id="tabs"></div>
+  <div class="stats" id="stats"></div>
+  <div class="chips" id="chips"></div>
+  <input type="search" id="q" placeholder="Search everything...">
+  <div class="box" id="box"></div>
+  <div class="count" id="count"></div>
+</div>
+<script>
+const D = {"societies": {"cols": ["society", "signed_up", "tiers", "cheapest_paid", "free_option", "page_status", "notes", "url", "live_view", "checked_at"], "rows": [{"society": "Computer Science Society", "signed_up": "unknown", "tiers": "Standard free; Taster free", "cheapest_paid": "", "free_option": "Standard", "page_status": "open", "notes": "Membership is currently available (not closed or on waiting list). Users need to be logged in to join. Two membership types are offered, both free.", "url": "https://studentsunionucl.org/clubs-societies/computer-science-society ", "live_view": "https://ip-52-53-246-109.tetra-data.production.tinyfish.io/tf-0084acde-2be7-4bf3-af71-13b95f4a8469/stream/0", "checked_at": "2026-10-05 19:42"}, {"society": "Artificial Intelligence Society", "signed_up": "unknown", "tiers": "Standard Â£5.00; Taster free", "cheapest_paid": "£5.00", "free_option": "Taster", "page_status": "open", "notes": "Two membership types available: Standard at Â£5.00 and Taster which is free. No indication of closed, full, or waiting list status. Users need to be logged in to join the society.", "url": "https://studentsunionucl.org/clubs-societies/artificial-intelligence-society", "live_view": "https://ip-50-18-5-236.tetra-data.production.tinyfish.io/tf-84cc1c37-51e4-4bf0-a30b-625cec9d2247/stream/0", "checked_at": "2026-10-05 19:42"}, {"society": "Data Science Society", "signed_up": "unknown", "tiers": "Standard Â£5.00; Taster free", "cheapest_paid": "£5.00", "free_option": "Taster", "page_status": "open", "notes": "The Join section lists two membership types: Standard (Â£5.00) and Taster (free). Membership is not closed or on a waiting list. Users must be logged in to join the club.", "url": "https://studentsunionucl.org/clubs-societies/data-science-society", "live_view": "https://ip-54-193-222-164.tetra-data.production.tinyfish.io/tf-f24d4da2-8dea-42a9-935b-384ab48c64cc/stream/0", "checked_at": "2026-10-05 19:42"}, {"society": "Technology Society", "signed_up": "unknown", "tiers": "Standard Â£5.00; Taster free", "cheapest_paid": "£5.00", "free_option": "Taster", "page_status": "open", "notes": "Membership is available but users must be logged in to join. No indication of closed, full, or waiting list status.", "url": "https://studentsunionucl.org/clubs-societies/technology-society", "live_view": "https://ip-50-18-5-236.tetra-data.production.tinyfish.io/tf-5498e39f-ab3b-47e2-aa58-d4407b222f86/stream/0", "checked_at": "2026-10-05 19:42"}, {"society": "Robotics Society", "signed_up": "unknown", "tiers": "Standard Â£10.00; Taster free", "cheapest_paid": "£10.00", "free_option": "Taster", "page_status": "open", "notes": "Membership is available. Users need to be logged in to join.", "url": "https://studentsunionucl.org/clubs-societies/robotics-society", "live_view": "https://ip-54-176-122-132.tetra-data.production.tinyfish.io/tf-1f2e6612-1953-4635-b51d-9fc951ff39be/stream/0", "checked_at": "2026-10-05 19:42"}]}, "events": {"cols": ["society", "event", "date", "date_iso", "time", "price", "free_status", "note", "event_url", "booked", "society_url", "live_view", "checked_at"], "rows": [{"society": "Computer Science Society", "event": "Python Bootcamp: Lesson 1", "date": "08/10/2026", "date_iso": "2026-10-08", "time": "18:00 - 19:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/clubs-societies/python-bootcamp-lesson-1?v=97376", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/computer-science-society ", "live_view": "https://ip-18-145-130-85.tetra-data.production.tinyfish.io/tf-3c7c170f-9cdc-45b7-9263-469f1557c028/stream/0", "checked_at": "2026-10-05 22:29"}, {"society": "Robotics Society", "event": "Maze Solving Challenge: Taster Session", "date": "10/10/2026", "date_iso": "2026-10-10", "time": "13:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/clubs-societies/maze-solving-challenge-taster-session?v=97254", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/robotics-society", "live_view": "https://ip-18-145-113-7.tetra-data.production.tinyfish.io/tf-eb0cc1f2-f10e-4ce5-9ccd-731210378a12/stream/0", "checked_at": "2026-10-05 22:29"}, {"society": "Technology Society", "event": "Maven Securities - Careers Q&A Session", "date": "12/10/2026", "date_iso": "2026-10-12", "time": "18:00 - 20:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/events-activities/maven-securities-careers-qa-session?v=96094", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/technology-society", "live_view": "https://ip-184-72-26-8.tetra-data.production.tinyfish.io/tf-eed442ef-57a4-4a90-9996-eb6606688244/stream/0", "checked_at": "2026-10-05 22:31"}, {"society": "Technology Society", "event": "Maven Securities - Women in Technology Event", "date": "13/10/2026", "date_iso": "2026-10-13", "time": "18:00 - 20:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/events-activities/maven-securities-women-in-technology-event?v=96095", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/technology-society", "live_view": "https://ip-184-72-26-8.tetra-data.production.tinyfish.io/tf-eed442ef-57a4-4a90-9996-eb6606688244/stream/0", "checked_at": "2026-10-05 22:31"}, {"society": "Computer Science Society", "event": "ARC X CSS: Intro to Computing Club", "date": "14/10/2026", "date_iso": "2026-10-14", "time": "13:30 - 15:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/clubs-societies/arc-x-css-intro-to-computing-club?v=97404", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/computer-science-society ", "live_view": "https://ip-18-145-130-85.tetra-data.production.tinyfish.io/tf-3c7c170f-9cdc-45b7-9263-469f1557c028/stream/0", "checked_at": "2026-10-05 22:29"}, {"society": "Technology Society", "event": "Building AI apps from scratch with the Google ecosystem", "date": "16/11/2026", "date_iso": "2026-11-16", "time": "18:00 - 20:00", "price": "", "free_status": "unknown", "note": "", "event_url": "https://studentsunionucl.org/whats-on/jobs-skills/building-ai-apps-from-scratch-with-google-ecosystem?v=97053", "booked": "", "society_url": "https://studentsunionucl.org/clubs-societies/technology-society", "live_view": "https://ip-184-72-26-8.tetra-data.production.tinyfish.io/tf-eed442ef-57a4-4a90-9996-eb6606688244/stream/0", "checked_at": "2026-10-05 22:31"}]}};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const state = {tab: D.societies.rows.length || !D.events.rows.length ? "societies" : "events", q: "", filter: {}, sort: {}};
+
+const T = () => D[state.tab];
+function filterCols(t) {
+  const out = [];
+  t.cols.forEach(c => {
+    if (/status|free|paid|type/i.test(c) && !/date|url|link/i.test(c)) {
+      const u = new Set(t.rows.map(r => r[c] || ""));
+      if (u.size > 1 && u.size <= 12) out.push(c);
+    }
+  });
+  return out.slice(0, 2);
+}
+function num(v) { const n = parseFloat(String(v).replace(/[^0-9.\-]/g, "")); return isNaN(n) ? null : n; }
+function defaultSort(tab) {
+  const c = D[tab].cols.find(c => /date_iso/i.test(c));
+  return c ? {col: c, dir: 1} : null;
+}
+function rowsNow() {
+  const t = T(); let rows = t.rows;
+  const q = state.q.trim().toLowerCase();
+  if (q) rows = rows.filter(r => t.cols.some(c => String(r[c] || "").toLowerCase().includes(q)));
+  const f = state.filter[state.tab] || {};
+  Object.keys(f).forEach(c => { rows = rows.filter(r => (r[c] || "") === f[c]); });
+  const s = state.sort[state.tab] || defaultSort(state.tab);
+  if (s) {
+    rows = [...rows].sort((a, b) => {
+      const x = a[s.col] || "", y = b[s.col] || "";
+      if (!x && !y) return 0; if (!x) return 1; if (!y) return -1;
+      const nx = num(x), ny = num(y);
+      const r = (nx !== null && ny !== null && /^[£$€]?\s*[0-9]/.test(x) && /^[£$€]?\s*[0-9]/.test(y)) ? nx - ny : String(x).localeCompare(String(y));
+      return r * s.dir;
+    });
+  }
+  return rows;
+}
+function cell(v) {
+  v = String(v ?? "");
+  if (/^https?:\/\//.test(v)) return `<a href="${esc(v)}" target="_blank" rel="noopener">open ↗</a>`;
+  return `<span title="${esc(v)}">${esc(v)}</span>`;
+}
+function render() {
+  const t = T();
+  document.getElementById("tabs").innerHTML = ["societies", "events"].map(k =>
+    `<button class="tab ${k === state.tab ? "on" : ""}" data-t="${k}">${k[0].toUpperCase() + k.slice(1)} (${D[k].rows.length})</button>`).join("");
+  const fc = filterCols(t);
+  const stats = [`<div class="stat"><b>${t.rows.length}</b><span>${state.tab}</span></div>`];
+  const chips = [];
+  fc.forEach(c => {
+    const counts = {};
+    t.rows.forEach(r => { const v = r[c] || ""; counts[v] = (counts[v] || 0) + 1; });
+    const top = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 4);
+    top.forEach(([v, n]) => { if (v) stats.push(`<div class="stat"><b>${n}</b><span>${esc(c)}: ${esc(v)}</span></div>`); });
+    const cur = (state.filter[state.tab] || {})[c];
+    chips.push(`<span class="chiplabel">${esc(c)}</span><button class="chip ${!cur ? "on" : ""}" data-c="${esc(c)}" data-v="">All</button>` +
+      Object.keys(counts).filter(v => v).sort().map(v => `<button class="chip ${cur === v ? "on" : ""}" data-c="${esc(c)}" data-v="${esc(v)}">${esc(v)}</button>`).join(""));
+  });
+  document.getElementById("stats").innerHTML = stats.slice(0, 6).join("");
+  document.getElementById("chips").innerHTML = chips.join("");
+  const rows = rowsNow();
+  const s = state.sort[state.tab] || defaultSort(state.tab);
+  const box = document.getElementById("box");
+  if (!t.cols.length) {
+    box.innerHTML = `<div class="empty">No ${state.tab}.csv found yet. Run the scripts first, then re-run dashboard.py.</div>`;
+  } else {
+    box.innerHTML = `<table><thead><tr>${t.cols.map(c => `<th data-s="${esc(c)}">${esc(c)}${s && s.col === c ? (s.dir > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>` +
+      rows.map(r => `<tr>${t.cols.map(c => `<td>${cell(r[c])}</td>`).join("")}</tr>`).join("") + `</tbody></table>` +
+      (rows.length ? "" : `<div class="empty">Nothing matches.</div>`);
+  }
+  document.getElementById("count").textContent = `${rows.length} of ${t.rows.length} rows`;
+}
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".tab"); if (tab) { state.tab = tab.dataset.t; render(); return; }
+  const chip = e.target.closest(".chip");
+  if (chip) {
+    const f = state.filter[state.tab] = state.filter[state.tab] || {};
+    if (chip.dataset.v) f[chip.dataset.c] = chip.dataset.v; else delete f[chip.dataset.c];
+    render(); return;
+  }
+  const th = e.target.closest("th");
+  if (th) {
+    const cur = state.sort[state.tab] || defaultSort(state.tab);
+    state.sort[state.tab] = {col: th.dataset.s, dir: cur && cur.col === th.dataset.s ? -cur.dir : 1};
+    render();
+  }
+});
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+render();
+</script>
+</body>
+</html>
