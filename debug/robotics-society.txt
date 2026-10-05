@@ -1,0 +1,27 @@
+We are a community of students passionate about robotics, AI, and technology. Whether you are a complete beginner or an experienced builder, our society provides the space to learn, create, and connect through hands-on projects, workshops, competitions, and socials.
+
+***🤖 Workshops:***
+
+Across the year, we'll host workshops tailored to different sections:
+
+* **Term 1**: CAD & 3D Printing, Arduino & Sensors, PCB Design, etc.
+* **Term 2**: ROS2 Tutorials
+
+***🤖 Competitions & Projects:***
+
+* **Robotics Hackathon:** An exciting event where ideas, teamwork, and innovation come together.
+* **Global Hardware Hackathons:** Join teams representing UCL at international event and collaborate with engineers worldwide.
+* **Litter Picking Robot:** TBA
+* **Unibots:** UK wide competition
+
+***🤖 Industry & Talks:***
+
+We will be inviting guest speakers from academia and industry to share insights on robotics research, real-world applications, and career paths. More details to be announced during the year.
+
+***🤖 Socials:***
+
+* Movie Nights featuring robotics and sci-fi classics
+* Collaborations with other UCL societies and other universities
+* Informal socials such as pizza nights and pub quizzes to bring members together
+
+* Technology & science

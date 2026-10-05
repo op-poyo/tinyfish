@@ -1,0 +1,6 @@
+# one society per line
+Computer Science Society
+Artificial Intelligence Society
+Data Science Society
+Technology Society
+Robotics Society

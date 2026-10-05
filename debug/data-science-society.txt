@@ -1,0 +1,59 @@
+## **Welcome to the UCL Data Science Society**
+
+**UCL's largest student-led tech community, 450+ members strong since 2019. Whether you're brand new to coding or already deep into projects, DSS gives you the platform, tools, and connections to grow.**
+
+**We're built around three things: technical upskilling, industry collaboration, and a community that pushes each other forward.**
+
+**Now, come find us at Fresher's Fair!**
+
+## What we do
+
+We're here to make you confident, capable, and connected in the world of tech.
+
+**➤ Upskill Like a Pro**
+
+* Weekly technical workshops covering Python (NumPy, Pandas, Matplotlib), machine learning and model evaluation, SQL, and data visualisation
+* Take part in **Project Labs** — our flagship 6-week, project-based programme where small teams work end to end on real datasets, from problem framing to a final presentation
+* Get mentorship and guidance to go from zero to hireable
+
+**✶ Real Industry Exposure:**
+
+* Past collaborations with **Google, OpenAI, Bloomberg, Microsoft, The Economist, BlackRock, Visa, LEGO, Rockstar Games, Notion, and Macquarie**
+* Events like **HackLondon, HackEurope, Bloomberg's Bpuzzled Challenge, the Google x Neuphonic AI Hackathon, and our own Zero to Demo Hackathon with Lovable, Google Cloud, and Eleven Labs**
+* 3 hackathons and datathons run with industry partners every term, plus 4-5 career events including panels, fireside chats, and keynote speakers
+* Hear directly from engineers, researchers, and alumni who *have done it*
+
+**𓄲 A Community That Has Your Back:**
+
+* Themed socials **(with freebies!)**, skill-sharing sessions, and group study jams
+* A welcoming space where your questions are valued and your growth matters — members come from Engineering, Maths & Physical Sciences, Social & Historical Sciences, Arts & Humanities, and beyond, so whatever you study, there's a place for you
+* Optional **mentorship** if you're starting from scratch
+
+**⚡︎ A Track Record That Speaks for Itself:**
+
+* Winner of the UCL Students' Union award for **highest contribution to student professional development**, earned by Project Labs in its very first year
+* Fortnightly newsletter with curated job tips, research drops, and opportunities
+* 4k+ Instagram followers and 2k+ LinkedIn followers, and counting
+
+## Our Membership Options
+
+**TASTER MEMBERSHIP ( FREE****):**
+
+Try DSS out with:
+
+* Free entry to Freshers' workshops, intro hackathons, panels and socials.
+* Access to our **Meet the Committee** event and **intro-to-data-science** crash course.
+
+**FULL MEMBERSHIP (*****£5*****):**
+
+* Full-year access to every event: workshops, panels, socials and competitions
+* Entry into exclusive project labs, corporate events, and career resources
+* Our weekly newsletter with curated job tips, research drops and opportunities
+
+## The Future Awaits
+
+Last year, DSS ran over 20 events. This year, we're levelling up - with professionals teaching you directly, events at top-tier venues, and a culture of **excellence and community.**
+
+📲 Follow us on Instagram and LinkedIn
+
+* Technology & science

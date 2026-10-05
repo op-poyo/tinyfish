@@ -1,0 +1,24 @@
+## Introduce Yourself
+
+**Get to know your fellow members on our****Discord****,****Facebook****,****Instagram****and****LinkedIn****!**
+
+## About Us
+
+We are **the first society in the UK** to focus on Artificial Intelligence.
+
+At the AI Society, we are dedicated to fostering UCL’s vibrant and impassioned AI community.
+
+Consisting of a mixture of undergrad and postgrad students, we work on innovative large-scale machine learning competitions, cutting edge journal clubs and UCL’s best student machine learning tutorials.
+
+Previously, we’ve hosted events with speakers from **Facebook, Google** and **OpenAI.**
+
+## What do we do for you?
+
+* **Keynote Speeches and workshops**: We will periodically invite world-leading experts to deliver talks on the hottest topics of the moment. This will keep you updated on the latest trends of the field.
+* **Machine Learning Tutorials**: These tutorials will be for absolute beginners. No coding literacy nor specific mathematical background is required. We will teach you how to create Intelligence and will make you implement some basic ML algorithms using Python.
+* **The Journal Club**: Some of our Masters and PhDs will run the Journal Club where members will periodically meet to discuss an article of interest.
+* **Foundry Labs:**  Given resources and workshops with VCs and other notable partners, we help passionate individuals transform their MVPs into startups.
+* **Hackathons:**  We organize hackathons throughout the year that bring together developers, designers, and idea-driven individuals to build innovative solutions in just a few days. Whether you're a seasoned hacker or a complete beginner, our hackathons are a great opportunity to collaborate, learn by doing, and even pitch your projects to industry experts for feedback and potential funding.
+* **Socials & Networking**: Finally we also have socials where we meet for drinks and have the chance of meeting interesting and like-minded people!
+
+* Technology & science
